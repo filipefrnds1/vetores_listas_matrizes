@@ -22,7 +22,7 @@ public class Vetores2 {
 			String name = sc.nextLine();
 			double price = sc.nextDouble();
 			vect[i] = new ProductVet(name,price);
-			//sum += vect[i].getPrice();
+			sum += vect[i].getPrice();
 		}
 		
 		double avg = sum / n;
