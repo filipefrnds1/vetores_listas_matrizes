@@ -30,9 +30,9 @@ public class ClassRoom {
 		this.email = email;
 	}
 	
-	//public String toString() {
-		//return
-	//}
+	public String toString() {
+		return name + ", " + email;
+ 	}
 	
 	
 }
