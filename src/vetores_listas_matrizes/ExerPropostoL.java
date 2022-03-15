@@ -26,7 +26,7 @@ public class ExerPropostoL {
 			int id = sc.nextInt();
 			//sc.nextLine();
 			while(hasId(list, id)) {
-				System.out.println("Id already Taken. Try again: ");
+				System.out.print("Id already Taken. Try again: ");
 				id = sc.nextInt();
 			}
 			sc.nextLine();
@@ -36,6 +36,18 @@ public class ExerPropostoL {
 			double salary = sc.nextDouble();
 			list.add(new Employees(id,name,salary));
 			
+		}
+		
+		System.out.println();
+		System.out.println("Enter the employee id that will have salary increase: ");
+		int id = sc.nextInt();
+		Employees emp = list.stream().filter(x -> x.getId() == id).findFirst().orElse(null);
+		if(emp == null) {
+			System.out.println("This id does not exist!");
+		}else {
+			System.out.print("Enter the percentage: ");
+			double percentage = sc.nextDouble();
+			emp.moreSalary(percentage);
 		}
 		
 		

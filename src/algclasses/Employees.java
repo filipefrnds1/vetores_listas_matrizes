@@ -4,13 +4,13 @@ public class Employees {
 	
 	private Integer id;
 	private String name;
-	private double salario;
+	private Double salario;
 	
 	public Employees(){
 		
 	}
 	
-	public Employees(Integer id, String name, double salario){
+	public Employees(Integer id, String name, Double salario){
 		this.id = id;
 		this.name = name;
 		this.salario = salario;
@@ -20,23 +20,27 @@ public class Employees {
 		return id;
 	}
 	
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
 	public String getName() {
 		return name;
-	}
+	}	
 	
 	public void setName(String name) {
 		this.name = name;
 	}
 	
-	public double getSalario() {
+	public Double getSalario() {
 		return salario;
 	}
 	
-	public void setSalario(double salario) {
+	public void setSalario(Double salario) {
 		this.salario = salario;
 	}
 	
-	public void moreSalary(double percent) {
+	public void moreSalary(Double percent) {
 		this.salario += (salario * percent/100 );
 	}
 	
