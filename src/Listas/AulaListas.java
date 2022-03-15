@@ -16,6 +16,8 @@ public class AulaListas {
 		
 		List<String> list = new ArrayList<>();//ctrl+shift+o para importar a lista. Obs: não aceita tipos primitivos
 		
+		list.add("Geraldo");
+		list.add("Gabriel");
 		list.add("Maria");
 		list.add("Filipe");
 		list.add("Joao");
@@ -48,9 +50,13 @@ public class AulaListas {
 		System.out.println("Index of Bob: " + list.indexOf("Filipe"));//  aparece onde está na lista
 		System.out.println("Index of Gugu: " + list.indexOf("Gugu"));
 		System.out.println("Index of Bob: " + list.indexOf("Bob")); // quando não encontra retorna -1
-		sc.close();
 		
-		List<String > result = list.stream().filter(x -> x.charAt(0) == 'J').collect(Collectors.toList());
+		
+		List<String > result = list.stream().filter(x -> x.charAt(0) == 'J').collect(Collectors.toList());//tipo stream 
+		// tipo stream é um tipo que aceita operações lambda, aqui é convertido a lista para o tipo stream.
+		//depois é chamado o filter, pois ele quem recebe o predicado, mas o tipo stream não é compativel com listas.
+		// pra converter novamente para listas é preciso usar o collect(Collectors.tolist());
+		//
 	
 		System.out.println("--------------------------");
 		for(String y : result) {
@@ -60,9 +66,12 @@ public class AulaListas {
 		System.out.println("-----------------------");
 		String name = list.stream().filter(x -> x.charAt(0) == 'G').findFirst().orElse(null);
 		String name1 = list.stream().filter(x -> x.charAt(0) == 'A').findFirst().orElse(null);
+		String name2 = list.stream().filter(x -> x.charAt(0) == 'G').findAny().orElse(null);
 		
 		System.out.println(name);
 		System.out.println(name1);
+		System.out.println(name2);
+		sc.close();
 	}
 
 }
