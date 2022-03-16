@@ -23,7 +23,7 @@ public class ExerPropostoL {
 		for(int i = 0; i < n; i++) {
 			System.out.println("Employee #" + i+1 + ":");
 			System.out.print("Id: ");
-			int id = sc.nextInt();
+			Integer id = sc.nextInt();
 			//sc.nextLine();
 			while(hasId(list, id)) {
 				System.out.print("Id already Taken. Try again: ");
@@ -41,13 +41,16 @@ public class ExerPropostoL {
 		System.out.println();
 		System.out.println("Enter the employee id that will have salary increase: ");
 		int id = sc.nextInt();
-		Employees emp = list.stream().filter(x -> x.getId() == id).findFirst().orElse(null);
-		if(emp == null) {
+		Integer pos = position(list,id);
+		//Employees emp = list.stream().filter(x -> x.getId() == id).findFirst().orElse(null);
+		//if(emp == null) {
+		if(pos == null) {	
 			System.out.println("This id does not exist!");
 		}else {
 			System.out.print("Enter the percentage: ");
 			double percentage = sc.nextDouble();
-			emp.moreSalary(percentage);
+			list.get(pos).moreSalary(percentage);
+			//emp.moreSalary(percentage);
 		}
 		
 		
@@ -64,6 +67,16 @@ public class ExerPropostoL {
 		
 		sc.close();
 	}
+	
+	public static Integer position(List<Employees> list, int id) {
+		for(int i = 0; i < list.size(); i++) {
+			if(list.get(i).getId() == id) {
+				return i;
+			}
+		}
+		return null;
+	}
+	
 	public static boolean hasId(List<Employees> list, int id) {
 		Employees emp = list.stream().filter(x -> x.getId() == id).findFirst().orElse(null);
 		return emp != null;
